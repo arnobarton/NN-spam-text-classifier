@@ -78,12 +78,14 @@ def predict_message(pred_text):
     pred_text = tf.cast(pred_text, tf.float32)
     prediction = model.predict(tf.expand_dims(pred_text, 0)).tolist()
     if prediction[0][0] < 0.5:
-      prediction.append('ham')
+      prediction = (' this is not spam')
     else:
-      prediction.append('spam')
+      prediction = ('this is spam')
     return (prediction)
-
-pred_text = "Call NOW for the chance to WIN BIG $10000"
-
+print("write your text message")
+text = input()
+pred_text = text
 prediction = predict_message(pred_text)
+
+  
 print(prediction)
